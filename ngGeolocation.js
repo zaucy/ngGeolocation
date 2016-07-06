@@ -1,4 +1,17 @@
-(function(){
+(function(root, factory) {
+    'use strict';
+
+    if (typeof module !== 'undefined' && module.exports) {
+        // CommonJS
+        module.exports = factory(require('angular'));
+    } else if (typeof define === 'function' && define.amd) {
+        // AMD
+        define(['angular'], factory);
+    } else {
+        // Global Variables
+        factory(root.angular);
+    }
+}(window, function(angular) {
     'use strict';
 
     angular
@@ -78,4 +91,6 @@
 
         return retVal;
     }]);
-}());
+
+    return 'ngGeolocation';
+}));
